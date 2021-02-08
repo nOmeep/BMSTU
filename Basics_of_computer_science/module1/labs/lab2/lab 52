@@ -1,0 +1,9 @@
+(define (any? pred? xs)
+  (let loop ((xs xs))
+    (and (not (null? xs))
+         (or (pred? (car xs))
+             (loop (cdr xs))))))
+
+(define (all? pred? xs)
+  (or (null? xs) (and (not (null? xs))
+                      (and (pred? (car xs)) (all? pred? (cdr xs))))))

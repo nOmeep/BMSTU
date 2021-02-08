@@ -1,0 +1,13 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-advanced-reader.ss" "lang")((modname mdash_nomer_dva) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #t #t none #f () #f)))
+(define (discriminant a b c)
+  (- (* b b) (* 4 a c)))
+(define (mdash& a b c)
+  (cond
+    ((< (discriminant a b c) 0) (list))
+    ((= (discriminant a b c) 0) (list(/ (- (sqrt(discriminant a b c)) b) (* 2 a))))
+    ((> (discriminant a b c) 0) (list (/ (- (- b) (sqrt(discriminant a b c))) (* 2 a)) (/ (- (sqrt(discriminant a b c)) b) (* 2 a))))
+  )
+)
+  

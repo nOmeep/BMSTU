@@ -1,0 +1,6 @@
+(define (rubles x)
+  (cond ((or (and (>= (remainder x 10) 5) (<= (remainder x 10) 9)) (= (remainder x 10) 0) (= (quotient (remainder x 100) 10) 1)) (cons x '("рублей")))
+        ((and (>= (remainder x 10) 2) (<= (remainder x 10) 4)) (cons x '("рубля")))
+        ((and (not(= (quotient (remainder x 100) 10) 1)) (= (remainder x  10) 1)) (cons x '("рубль")))))
+
+

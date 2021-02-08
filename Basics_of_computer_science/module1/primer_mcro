@@ -1,0 +1,20 @@
+(define-syntax my-cond
+  (syntax-rules (else)
+    ((_ (else . actions)) (begin . actions))
+    ((_ (condition . actions))
+     (if condition
+         (begin . actions)))
+    ((_ (condition . actions) . branches)
+     (if condition
+         (begin . actions)
+         (my-cond . branches)))))
+(define (f x)
+  (my-cond ((> x 0) (display 'positive) (newline))
+           ((< x 0) (display 'negative) (newline))
+           ((= x 0) (display 'zero) (newline))))
+(define-syntax my-begin
+  (syntax-rules ()
+    ((_ action) actions)
+    ((_ action . actions)
+     (let ((not-used action))
+       (my-begin . actions)))))

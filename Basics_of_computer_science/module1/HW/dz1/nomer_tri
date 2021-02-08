@@ -1,0 +1,19 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-reader.ss" "lang")((modname nomer_tri) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(define (my-gcd a b)
+  (if (= b 0)
+      (abs a)
+      (my-gcd b (remainder a b))
+      )
+  )
+
+(define (my-lcm a b)
+  (/ (* a b) (my-gcd a b))
+  )
+
+(define (perebor n n1)
+  (or (or (= n1 1) (= n1 0)) (and (not (= (remainder n n1) 0)) (perebor n (- n1 1))))
+  )
+(define (prime? n)
+  (perebor n (- n 1)))

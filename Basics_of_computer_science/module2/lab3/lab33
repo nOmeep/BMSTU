@@ -1,0 +1,74 @@
+;FIRST PART;
+(define (ref1 xs index)
+  (define (ref-help xs index)
+    (if (eq? index 0)
+        (car xs)
+        (if (not (null? (cdr xs)))
+            (ref-help (cdr xs) (- index 1))
+            (not (null? (cdr xs))))))
+  (define (translate xs)
+    (cond ((vector? xs) (vector->list xs))
+          ((string? xs) (string->list xs))
+          (else xs)))
+  (ref-help (translate xs) index))
+
+;SECOND PART;
+(define (ref xs index element) ;REF ITSELF;
+  (define (find-type xs)
+    (cond ((vector? xs) 'vector) ;for vector type;
+          ((list? xs) 'list) ;same for list;
+          (else 'string)));same for string;
+  (define (ref-ins xs index element1) ;find new home...;
+    (if (eq? index 0)
+        (append (append element1 (list element)) xs)
+        (cond ((not (null? (cdr xs))) (ref-ins (cdr xs) (- index 1) (append element1 (list (car xs)))))
+              (else (not (null? (cdr xs)))))))
+  (define (what-is-it xs) ;what type is it + changing;
+    (cond ((vector? xs) (vector->list xs)) ;turn to another type;
+          ((string? xs) (string->list xs)) ;same;
+          (else xs))) ;same;
+  (define (list-of-char? xs condition) ;for some not common str;
+    (if (null? xs)
+        condition
+        (if (char? (car xs))
+            (list-of-char? (cdr xs) condition)
+            #f)))
+  (define (translate xs type)
+    (cond ((eq? type 'vector)(list->vector xs))
+          ((eq? type 'string)
+           (if (list-of-char? xs #t) ;thats why i needed this func;
+               (list->string xs)
+               #f))
+    (else xs)))
+  (let ((buf (ref-ins (what-is-it xs) index '())))
+    (if (not buf)
+        buf
+        (translate buf (find-type xs))))) ;yesssss it's done;
+
+;TESTS FOR FIRST PART;
+(ref1 '(1 2 3) 1) ;⇒ 2
+(ref1 #(1 2 3) 1) ;⇒ 2
+(ref1 "123" 1)    ;⇒ #\2
+(ref1 "123" 3)    ;⇒ #f
+            
+;TESTS FOR SECOND PART;
+(ref '(1 2 3) 1 0)   ;⇒ (1 0 2 3)
+(ref #(1 #(2 2 1) 3) 1 0)   ;⇒ #(1 0 2 3)
+(ref #(1 2 3) 1 #\0) ;⇒ #(1 #\0 2 3)
+(ref "123" 1 #\0)    ;⇒ "1023"
+(ref "123" 1 0)      ;⇒ #f
+(ref "123" 3 #\4)    ;⇒ "1234" - WRONG ANSWER
+(ref "123" 5 #\4)    ;⇒ #f
+    
+
+
+
+
+
+
+
+
+
+
+
+    

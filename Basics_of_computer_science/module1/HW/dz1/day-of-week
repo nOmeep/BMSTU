@@ -1,0 +1,7 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-advanced-reader.ss" "lang")((modname day-of-week) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #t #t none #f () #f)))
+(define (day-of-week d m y)
+  (if (< m 3)
+      (remainder (+ 1 (remainder (+ d 3 (- y 1) (quotient (- y 1) 4) (- (quotient  (- y 1) 100)) (quotient (- y 1) 400) (quotient (+ (* 31 m) 10) 12)) 7)) 7)
+      (remainder (+ 1 (remainder (+ d y (quotient y 4) (- (quotient y 100)) (quotient y 400) (quotient (+ (* 31 m) 10) 12)) 7)) 7)))

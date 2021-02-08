@@ -1,0 +1,48 @@
+(define (poisk strs)
+  (if (null? strs)
+      '()
+      (if (or (equal? (car strs) '#\tab) (equal? (car strs) '#\newline) (equal? (car strs) '#\ ))
+          (poisk (cdr strs))
+          strs)))
+
+(define (string-trim-left str)
+  (list->string (poisk (string->list str))))
+
+(define (string-trim-right str)
+  (list->string (reverse (poisk (reverse (string->list str))))))
+
+(define (string-trim str)
+  (string-trim-right (string-trim-left str)))
+
+(define (list-prefix? as bs)
+  (cond ((null? as) #t)
+        ((eq? (car as) (car bs)) (list-prefix? (cdr as) (cdr bs)))
+        (else #f)))
+
+(define (string-prefix? a b)
+  (list-prefix? (string->list a) (string->list b)))
+
+(define (string-suffix? a b)
+  (list-prefix? (reverse (string->list a)) (reverse (string->list b))))
+
+(define (list-infix? as bs)
+  (cond ((null? bs) #f)
+        ((list-prefix? as bs) #t)
+        (#t (list-infix? as (cdr bs)))))
+
+(define (string-infix? a b)
+  (list-infix? (string->list a) (string->list b)))
+
+(define (string-split str sep)
+  (define (loop str sep i r1 r2)
+    (if (= r2 (string-length str))
+        (if (equal? (substring str r1 r2) sep)
+            (list (substring str i r2))
+            (list (substring str i (string-length str))))
+        (if (> r2 (string-length str))
+            (list (substring str i))
+            (if (equal? (substring str r1 r2) sep)
+                (cons (substring str i r1) (loop str sep r2 r2 (+ r2 (string-length sep))))
+                (loop str sep i (+ 1 r1) (+ 1 r2))))
+        ))
+  (loop str sep 0 0 (string-length sep)))
