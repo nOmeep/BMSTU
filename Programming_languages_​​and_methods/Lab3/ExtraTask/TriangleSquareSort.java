@@ -1,8 +1,8 @@
 import java.util.Arrays;
 
 class Point {
-    private final double x;
-    private final double y;
+    final double x;
+    final double y;
 
     public Point(int x, int y) {
         this.x = x;
@@ -19,7 +19,7 @@ class Point {
 }
 
 class Triangle implements Comparable<Triangle> {
-    private final int square;
+    final int square;
 
     public Triangle() {
         Point[] _points = new Point[3];
