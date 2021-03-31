@@ -324,61 +324,63 @@ func Vocabular(term string) int {
 	return 0
 }
 
-func SchemeEval() int {
-	for _, tmp := range token{
-		if (tmp[0] > 47 && tmp[0] < 58) || (tmp[0] == '-' && len(tmp) > 1){
-			num, _ := strconv.Atoi(tmp)
-			stack.push(num)
-		} else if ( tmp[0] > 64 &&  tmp[0] < 91) || ( tmp[0] > 96 && tmp[0] < 123) {
-			num := getVal(tmp)
-			stack.push(num)
-		} else {
-			switch tmp {
-
-				case "+":
-
-					stack.push(stack.pop() + stack.pop())
-
-				case "-":
-
-					var (
-						second int = stack.pop()
-						first int = stack.pop()
-					)
-
-					stack.push(first - second)
-
-				case "*":
-
-					stack.push(stack.pop() * stack.pop())
-
-				case "/":
-
-					var (
-						second int = stack.pop()
-						first int = stack.pop()
-					)
-
-					if first == 0 {
-
-						stack.push(0)
-
-					} else {
-
-						stack.push(first/second)
-					}
-
-			}
-		}
-	}
-	return stack.pop()
-}
-
 // Конец функций
 
 // Начало gachibass'a в main'e
 
 func main(){
+
+	var schemeEval func() int
+	schemeEval = func() int {
+		for _, tmp := range token{
+			if (tmp[0] > 47 && tmp[0] < 58) || (tmp[0] == '-' && len(tmp) > 1){
+				num, _ := strconv.Atoi(tmp)
+				stack.push(num)
+			} else if ( tmp[0] > 64 &&  tmp[0] < 91) || ( tmp[0] > 96 && tmp[0] < 123) {
+				num := getVal(tmp)
+				stack.push(num)
+			} else {
+				switch tmp {
+	
+					case "+":
+	
+						stack.push(stack.pop() + stack.pop())
+	
+					case "-":
+	
+						var (
+							second int = stack.pop()
+							first int = stack.pop()
+						)
+	
+						stack.push(first - second)
+	
+					case "*":
+	
+						stack.push(stack.pop() * stack.pop())
+	
+					case "/":
+	
+						var (
+							second int = stack.pop()
+							first int = stack.pop()
+						)
+	
+						if first == 0 {
+	
+							stack.push(0)
+	
+						} else {
+	
+							stack.push(first/second)
+						}
+	
+				}
+			}
+		}
+		return stack.pop()
+	}
+
 	var (
 		term string = input.Gets()
 	)
@@ -398,7 +400,7 @@ func main(){
 				variable = append(variable, v)
 			}
 		}
-		fmt.Println(SchemeEval())
+		fmt.Println(schemeEval())
 		//fmt.Println(errorStatus)
 	}
 }
