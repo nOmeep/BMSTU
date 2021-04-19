@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="PictureForm">
+  <grid id="27dc6" binding="mainField" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="c1032" class="javax.swing.JRadioButton" binding="radioButtonRed">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <selected value="true"/>
+          <text value="Red"/>
+        </properties>
+      </component>
+      <component id="95107" class="CanvasPanel" binding="canvasPanel1" default-binding="true">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="300" height="300"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1114146"/>
+        </properties>
+      </component>
+      <component id="e2bc" class="javax.swing.JRadioButton" binding="radioButtonYellow">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Yellow"/>
+        </properties>
+      </component>
+      <component id="60cee" class="javax.swing.JRadioButton" binding="radioButtonBlue">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Blue"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+  <buttonGroups>
+    <group name="buttonGroup1">
+      <member id="b3ce5"/>
+    </group>
+    <group name="buttonGroup2">
+      <member id="575aa"/>
+    </group>
+    <group name="colorButtonGroup">
+      <member id="c1032"/>
+      <member id="e2bc"/>
+      <member id="60cee"/>
+    </group>
+  </buttonGroups>
+</form>
