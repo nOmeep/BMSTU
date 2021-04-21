@@ -32,11 +32,11 @@ public class PictureForm {
                 canvasPanel1.y2.add(e.getY());
 
                 if (radioButtonBlue.isSelected()) {
-                    canvasPanel1.fuckYou.add(0);
+                    canvasPanel1.colorArr.add(0);
                 } else if (radioButtonRed.isSelected()) {
-                    canvasPanel1.fuckYou.add(1);
+                    canvasPanel1.colorArr.add(1);
                 } else {
-                    canvasPanel1.fuckYou.add(2);
+                    canvasPanel1.colorArr.add(2);
                 }
 
                 length = canvasPanel1.x2.size();

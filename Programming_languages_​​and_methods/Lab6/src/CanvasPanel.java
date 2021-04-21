@@ -7,15 +7,15 @@ public class CanvasPanel extends JPanel {
     public ArrayList<Integer> x2 = new ArrayList<>();
     public ArrayList<Integer> y1 = new ArrayList<>();
     public ArrayList<Integer> y2 = new ArrayList<>();
-    public ArrayList<Integer> fuckYou = new ArrayList<>();
+    public ArrayList<Integer> colorArr = new ArrayList<>();
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         for (int i = 0; i < PictureForm.length; i++) {
-            if (fuckYou.get(i) == 0) {
+            if (colorArr.get(i) == 0) {
                 g.setColor(Color.BLUE);
-            } else if (fuckYou.get(i) == 1) {
+            } else if (colorArr.get(i) == 1) {
                 g.setColor(Color.RED);
             } else {
                 g.setColor(Color.YELLOW);
