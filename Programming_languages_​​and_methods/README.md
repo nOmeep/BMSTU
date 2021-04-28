@@ -1085,10 +1085,9 @@ Roots<Double> roots = Roots.of(a, b, c).flatMap(y -> Roots.of(10, p, -1 * y));
 
     - Метод `flatMap` ассоциативен, т.е m.`flatMap(f).flatMap(g)` эквивалентен `m.flatMap(x -> f(x).flatMap(g))` 
 
+***
+# Лекция №9
+***
 
-
-
-
-
-
+## Монада Optional
 
