@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Нулевая лаба</title>
+</head>
+<body>
+<h3>Запрос пользователя какого-нибудь</h3>
+<form method="GET" action="postUser">
+    <label>Имя</label><br>
+    <input type="text" name="name" /><br><br>
+    <label>Возраст</label><br>
+    <input type="number" name="age" /><br><br>
+    <input type="submit" value="Отправить" />
+</form>
+<h3>Ввод номера странички от 1 до 8, которая распарсится</h3>
+<form method="GET" action="parse">
+    <label>Номер странички для парсинга</label><br>
+    <input type="text" name="number" /><br><br>
+    <input type="submit" value="Отправить" />
+</form>
+</body>
+</html>
